@@ -9,6 +9,7 @@
 </head>
 <body>
     <?php
+    //dfg
      //connexion a la base de donnees
      include_once "connexion.php";
      //selectionner tous les etudiants par niveau
@@ -30,7 +31,7 @@
 
      $query_et4="SELECT DISTINCT etudiant.matricule FROM etudiant  LEFT OUTER JOIN soutenir 
      ON soutenir.matricule=etudiant.matricule WHERE (note IS NULL) AND (niveau='M2')";
-     $mat4 = mysqli_query($conn, $query_et4); 
+     $mat4 = mysqli_query($conn, $query_et4);  
 
      $query_org="SELECT DISTINCT idorg FROM organisme";
      $org = mysqli_query($conn, $query_org); 
