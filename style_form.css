@@ -1,0 +1,71 @@
+/*Toute la page*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+image{
+    height: 30px;
+}
+
+
+/*fichier modifier.php et ajouter.php*/
+h2{
+    margin: 10px 0;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+/*message d'erreur*/
+.erreur_message
+{
+    color: red;
+    font-size: 12px;
+}
+
+/*toutes les formulaires*/
+
+/*form*/
+.form{
+    background-color: #f6f8f8;
+    padding:25px;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.2) ;
+    border-radius:6px ;
+    width: 500px;
+}
+.form form{
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+}
+
+label{
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+input{
+    padding: 5px;
+    border: 1px solid #999;
+    margin-top:2px ;
+    outline: 0;
+}
+input:focus{
+    border:1px solid  #ffcb66;
+}
+input[type="submit"]{
+    background-color:#2bc48a; 
+    border:1px solid #2bc48a;
+    margin-top:25px;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+}
