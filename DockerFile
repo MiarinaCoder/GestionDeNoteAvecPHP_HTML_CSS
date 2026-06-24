@@ -1,14 +1,13 @@
-# Image officielle PHP 7.4 avec Apache
 FROM php:7.4-apache
 
-# Copier ton projet dans le serveur Apache
+# Installer l'extension mysqli
+RUN docker-php-ext-install mysqli
+
+# Copier le projet
 COPY . /var/www/html/
 
-# Activer rewrite (utile pour les URLs propres)
+# Activer rewrite
 RUN a2enmod rewrite
 
-# Permissions correctes
+# Permissions
 RUN chown -R www-data:www-data /var/www/html
-
-# Port exposé (optionnel mais propre)
-EXPOSE 80
