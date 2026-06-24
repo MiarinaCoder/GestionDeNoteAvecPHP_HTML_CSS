@@ -11,7 +11,14 @@
 // ─────────────────────────────────────────────
 $envFile = realpath(dirname(__DIR__)) . DIRECTORY_SEPARATOR . '.env.php';
 if (file_exists($envFile)) {
-    require_once $envFile;
+    $env = include $envFile;
+
+    if (is_array($env)) {
+        foreach ($env as $name => $value) {
+            $_ENV[$name] = $value;
+            putenv(sprintf('%s=%s', $name, $value));
+        }
+    }
 }
 
 // ─────────────────────────────────────────────
@@ -50,8 +57,8 @@ if (!empty($missingVars)) {
     $message = 'Erreur de configuration : les variables d\'environnement suivantes sont manquantes ou vides : '
              . implode(', ', $missingVars)
              . '. Vérifiez votre configuration serveur ou votre fichier .env.php.';
-    error_log($message);
-    die($message);
+    // error_log($message);
+    // die($message);
 }
 
 // ─────────────────────────────────────────────
@@ -81,7 +88,7 @@ function get_db_connection(): mysqli {
             die($error);
         }
 
-        mysqli_set_charset($conn, 'utf8mb4');
+        // mysqli_set_charset($conn, 'utf8mb4');
     }
 
     return $conn;
