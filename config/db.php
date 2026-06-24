@@ -19,8 +19,8 @@ if (file_exists($envFile)) {
 // ─────────────────────────────────────────────
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 $isLocal = in_array($host, ['localhost', '127.0.0.1', '::1'], true)
-        || str_ends_with($host, '.local')
-        || str_ends_with($host, '.test');
+        || substr($host, -6) === '.local'
+        || substr($host, -5) === '.test';
 
 // ─────────────────────────────────────────────
 // 3. Résolution des variables selon l'environnement
