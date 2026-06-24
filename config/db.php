@@ -31,11 +31,11 @@ if ($isLocal) {
     $dbPass = '';
     $dbName = 'gestion_soutenance';
 } else {
-    // getenv() en priorité, $_ENV en fallback (selon variables_order dans php.ini)
-    $dbHost = getenv('DB_HOST') ?: ($_ENV['DB_HOST'] ?? '');
-    $dbUser = getenv('DB_USER') ?: ($_ENV['DB_USER'] ?? '');
-    $dbPass = getenv('DB_PASS') ?: ($_ENV['DB_PASS'] ?? '');
-    $dbName = getenv('DB_NAME') ?: ($_ENV['DB_NAME'] ?? '');
+    // trim() retire les espaces ET les guillemets simples éventuels
+    $dbHost = trim(getenv('DB_HOST') ?: ($_ENV['DB_HOST'] ?? ''), " \t\n\r\0\x0B'\"");
+    $dbUser = trim(getenv('DB_USER') ?: ($_ENV['DB_USER'] ?? ''), " \t\n\r\0\x0B'\"");
+    $dbPass = trim(getenv('DB_PASS') ?: ($_ENV['DB_PASS'] ?? ''), " \t\n\r\0\x0B'\"");
+    $dbName = trim(getenv('DB_NAME') ?: ($_ENV['DB_NAME'] ?? ''), " \t\n\r\0\x0B'\"");
 }
 
 // ─────────────────────────────────────────────
