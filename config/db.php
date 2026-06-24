@@ -1,6 +1,8 @@
 <?php
 // Configuration de la base de données
-$isLocal = true;
+
+// Détection simple : local ou production
+$isLocal = ($_SERVER['HTTP_HOST'] ?? 'localhost') === 'localhost';
 
 if ($isLocal) {
     define('DB_HOST', 'localhost');
