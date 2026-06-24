@@ -1,13 +1,22 @@
 <?php
 // Configuration de la base de données
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'gestion_soutenance');
+$isLocal = true;
+
+if ($isLocal) {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'gestion_soutenance');
+} else {
+    define('DB_HOST', getenv("DB_HOST"));
+    define('DB_USER', getenv("DB_USER"));
+    define('DB_PASS', getenv("DB_PASS"));
+    define('DB_NAME', getenv("DB_NAME"));
+}
 
 // Chemins
 define('ROOT_PATH', realpath(dirname(__DIR__)) . DIRECTORY_SEPARATOR);
-define('BASE_URL', '/GestionDeNoteAvecPHP_HTML_CSS-main/'); // À ajuster selon le déploiement
+define('BASE_URL', '/GestionDeNoteAvecPHP_HTML_CSS/'); // À ajuster selon le déploiement
 
 /**
  * Initialise la connexion à la base de données
