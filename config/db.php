@@ -22,6 +22,23 @@ $isLocal = in_array($host, ['localhost', '127.0.0.1', '::1'], true)
         || substr($host, -6) === '.local'
         || substr($host, -5) === '.test';
 
+
+        // ─────────────────────────────────────────────
+// 3. DEBUG TEMPORAIRE — retirer après diagnostic
+// ─────────────────────────────────────────────
+
+if (!$isLocal) {
+    die(json_encode([
+        'isLocal'     => $isLocal,
+        'HTTP_HOST'   => $host,
+        'DB_HOST_env' => var_export(getenv('DB_HOST'), true),
+        'DB_USER_env' => var_export(getenv('DB_USER'), true),
+        'DB_PASS_env' => var_export(getenv('DB_PASS'), true),
+        'DB_NAME_env' => var_export(getenv('DB_NAME'), true),
+        '_ENV'        => $_ENV,
+    ], JSON_PRETTY_PRINT));
+}
+
 // ─────────────────────────────────────────────
 // 3. Résolution des variables selon l'environnement
 // ─────────────────────────────────────────────
